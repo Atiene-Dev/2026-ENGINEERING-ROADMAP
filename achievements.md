@@ -1,8 +1,8 @@
-Day 1: System Online
-Successfully set up Atiene-Dev profile.
+# 2026 Progress Log
 
-Created the 2026 Roadmap repository.
-
-Added a README and a License.
-
-Survived the first day without the head blowing.
+| Date | Achievement | Status |
+| :--- | :--- | :--- |
+| Jan 1 | Initialized Atiene-Dev Profile | ✅ Done |
+| Jan 1 | Created Engineering Roadmap Repo | ✅ Done |
+| Jan 1 | Added Security .gitignore & MIT License | ✅ Done |
+| Jan 1 | First Python Script Written | 🔄 In Progress |
