@@ -5,4 +5,5 @@
 | Jan 1 | Initialized Atiene-Dev Profile | ✅ Done |
 | Jan 1 | Created Engineering Roadmap Repo | ✅ Done |
 | Jan 1 | Added Security .gitignore & MIT License | ✅ Done |
-| Jan 1 | First Python Script Written | 🔄 In Progress |
+| Jan 1 | First Python Script Written | ✅ Done |
+| Jan 1 | Logged first Python file | ✅ Done |
