@@ -1,7 +1,7 @@
 import socket
 
 # This is the target (your own laptop for now)
-target = "192.168.0.105"
+target = "127.0.0.1"
 
 def scan_port(port):
     #This creates a 'probe' to see if the door is open
@@ -18,4 +18,5 @@ def scan_port(port):
 check_list = [22, 80, 135, 443, 445]
 
 for p in check_list:
+
     scan_port(p)
