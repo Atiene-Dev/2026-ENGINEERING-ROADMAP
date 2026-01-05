@@ -1,7 +1,7 @@
 import socket
 import logging
 
-# 1. Setup the "Paper Trail" (Logging)
+#THIS part tells Python to write a report in a file
 logging.basicConfig(filename='soc_scan.log', level=logging.INFO, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -14,6 +14,7 @@ def scan_port(port):
     
     # 2. THE BRAIN: Deciding what is dangerous
     if result == 0:
+        #This part checks if the thief is trying to get in 
         if port == 445:
             message = f"!!! CRITICAL DANGER: Port {port} (SMB) is OPEN! !!!"
         elif port == 135:
@@ -22,6 +23,7 @@ def scan_port(port):
             message = f"Port {port}: OPEN (DANGER!)"
         
         print(message)
+        logging.warning("CRITICAL: WannaCry/SMB vulnerability detected on port 445!")
         logging.info(message) # Saves the message to your log file
     else:
         # We don't print closed ports to keep the screen clean
