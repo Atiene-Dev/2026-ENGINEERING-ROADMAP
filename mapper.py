@@ -1,27 +1,34 @@
 import socket
 
-def scan_port(ip,port):
-    # 1. Create the 'socket' (like picking up a phone)
+def scan_port(ip, port):
+    # This sets up the 'phone line' to talk to the other computer
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    # 2. Set a timer (don't wait more than one second for a answer)
-    s.settimeout(1)
-
-    # 3. Try to connect (The 'Knock')
-    # connect_ex returns 0 if it works, an error code if it doesn't
+    s.settimeout(2)
+    
+    # This 'knocks' on the door (port)
     result = s.connect_ex((ip, port))
-
+    
     if result == 0:
-        print(f"[!] Port {port} is OPEN - Possible entry point!")
+        print(f"[!] Port {port} is OPEN!")
+        try:
+            # We ask the server for its 'ID Card' (Banner)
+            s.send(b"Hello\r\n")
+            banner = s.recv(1024)
+            print(f"    [Service Info]: {banner.decode().strip()}")
+        except:
+            print("    [Service Info]: Service detected but no banner received.")
     else:
-        print(f"[-] Port {port} is CLOSED.")
-    # 4. Hang up the phone
+        # If the knock gets no answer
+        print(f"[-] Port {port} is closed.")
+    
     s.close()
 
-    #-----Test it below-------
-target = input("Enter ip to map: ")
-               
-print(f"---- Scanning ports 20 to 100 on {target} ---")
+# --- THE STARTING POINT ---
+target = input("Enter IP to map (e.g., 192.168.0.1): ")
+print(f"--- Scanning ports 20 to 100 on {target} ---")
+
+# This loop automatically checks ports 20 through 100
 for port in range(20, 101):
-    scan_port(target, port) 
-print("Scan complete. How many 'OPEN' doors did you find?")
+    scan_port(target, port)
+
+print("Scan complete. Good job, Engineer.")
